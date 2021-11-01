@@ -1,10 +1,26 @@
-use quanlyhocvien;
-select s.fullname, c.ClassName from students s
-join classes c on s.class_id = c.id;
-select fullname,address from students
-join address a on a.id = students.address_id;
-select  avg(point1) as diemtb  from point1
-join course c on c.id = point1.course_id;
-select fullname, ClassName from students
-left join point1 p on students.id = p.student_id
+use quanlysinhvien;
+select Address, count(StudentName) as soluongsinhvien from student s
+group by (Address);
+
+
+select s.studentID,s.studentName,AVG(Mark) from student s
+join mark m on s.StudentID = m.StudentID
+group by s.studentID, s.studentName;
+
+
+select s.studentID,s.studentName,AVG(Mark) as DTB from student s
+join mark m on s.StudentID = m.StudentID
+group by s.studentID, s.studentName
+having DTB > 15 ;
+
+
+select s.studentID,s.studentName, AVG(Mark)as DTBMAX from student s
+join mark m on s.StudentID = m.StudentID
+group by s.studentID, s.studentName
+having DTBMAX >= all (select avg(Mark) from mark group by s.StudentID);
+
+
+
+
+
 
