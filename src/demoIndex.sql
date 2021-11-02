@@ -58,3 +58,16 @@ select @counter;
 call setCount(@counter,1);
 select @counter;
 
+# them view
+create view customers_view as
+    select customerNumber,customerName,phone from customers;
+
+# cap nhap view
+create or replace view customer_view as
+    select customerNumber,customerName,contactFirstName,contactLastName,phone from customers
+where city = 'nantes';
+select * from customer_view;
+
+# xoa view
+
+drop view customer_view;
