@@ -19,3 +19,42 @@ begin
 end;
 
 call findALlCustomers();
+# tham so loai IN
+create procedure getCusById(IN cusNum int(11))
+begin
+    select * from customers where customerNumber = cusNum;
+end;
+
+call getCusById(175);
+
+# tham so loai OUT
+create procedure getCustomerByCity(
+in in_city varchar(50),
+out total int
+)
+begin
+    select count(customerNumber)
+        into total
+    from customers
+        where city = in_city;
+end;
+
+call getCustomerByCity('Lyon',@tongcong);
+select @tongcong;
+
+# tham so inout
+
+create procedure setCounter(
+inout counter int,
+in inc int
+
+)
+begin
+    set counter = counter + inc;
+end;
+set @counter = 1;
+call setCounter(@counter,1);
+select @counter;
+call setCount(@counter,1);
+select @counter;
+
