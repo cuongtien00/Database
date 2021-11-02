@@ -32,6 +32,10 @@ join mark m on s.StudentID = m.StudentID
 group by s.StudentID
 order by DTB desc ;
 
+use quanlysinhvien;
+create unique index studentIndex on student (StudentName);
+ select StudentName from student where StudentName = 'Hien';
+
 
 
 
